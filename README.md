@@ -36,26 +36,7 @@ Date: Wed, 15 May 2019 07:39:12 GMT
 
 #2. 
 
-curl -i http://api.softhouse.rocks/posts\?userId\=4
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Access-Control-Allow-Origin: *
-Content-Type: application/json; charset=utf-8
-Content-Length: 2734
-ETag: W/"aae-QpmBOAZvOubm1wnpfa6clQTiLw0"
-Date: Wed, 15 May 2019 07:58:58 GMT
-Via: 1.1 google
-
-  {
-    "_id": "5caaef896b334800cbf66363",
-    "userId": 4,
-    "id": 40,
-    "title": "enim quo cumque",
-    "body": "ut voluptatum aliquid illo tenetur nemo sequi quo facilis\nipsum rem optio mollitia quas\nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime voluptas nam",
-    "__v": 0
-  }
-
-#3.
+Get request from path: posts for a "UserId" and the response is a Json object
 
 curl -i http://api.softhouse.rocks/posts\?userId
 HTTP/1.1 200 OK
@@ -63,9 +44,8 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 28446
-ETag: W/"6f1e-PyXH94Bu3V/yl7NxebOoWEaMImE"
 Date: Wed, 15 May 2019 08:02:44 GMT
-Via: 1.1 google
+
 
   {
     "_id": "5cb367e82855b90020cc0fce",
@@ -73,3 +53,25 @@ Via: 1.1 google
     "id": 101,
     "__v": 0
   }
+
+#3. 
+
+Post to "Post" posted user.
+
+curl -i -X POST "http://api.softhouse.rocks/posts" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"title\":\"string\",\"body\":\"s
+tring\",\"userId\":1}"
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 95
+Date: Wed, 15 May 2019 08:55:12 GMT
+
+{
+  "_id": "5cdbd52ef4a0350020b48175",
+  "body": "string",
+  "title": "string",
+  "userId": 1,
+  "id": 110,
+  "__v": 0
+}
