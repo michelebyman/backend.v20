@@ -67,22 +67,41 @@ Date: Wed, 15 May 2019 10:10:34 GMT
   "__v": 0
 }
 
+#4. Patch in posts change existing post in posts, you can choose whatever you want to change of the object, if you want to change one line you don't have to include all properties
+
+curl -X PATCH "http://api.softhouse.rocks/posts/4" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"title\":\"Örjan\",\"body\":\"string\",\"userId\":1}"
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 101
+Date: Wed, 15 May 2019 11:09:35 GMT
+
+{
+  "_id": "5caaef896b334800cbf6633f",
+  "userId": 1,
+  "id": 4,
+  "title": "Örjan",
+  "body": "string",
+  "__v": 0
+}
+
+#5. Deletes the choosen Pathparameter.
+
+curl -i -X DELETE "http://api.softhouse.rocks/posts/6"
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset=utf-8
+Content-Length: 2
+Date: Wed, 15 May 2019 11:37:57 GMT
 
 
+#This is one example made in User-Path, it works the same with the User-Path as above in the Posts-Path
 
 
-
-
-
-
-
-
-
-
-
-
-#This is tasks made in User
-
+#1.
 Here we are doing a get-request to the api (http://api.softhouse.rocks/users) and the result is list of users UTF-8 application/json
 
 curl = (GET)
