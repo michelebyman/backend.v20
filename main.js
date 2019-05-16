@@ -5,12 +5,14 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use('/', routes);
 
-//response to the site.
-// app.get("/", (req,res) => {
-//     res.send({"Hello":"World"});
-// });
+
+//add middleware for parsing the body to req.body
+//middlewares are axecuted in the order added, so add before routers.
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+app.use('/', routes);
 
 //listen to port that is defined.
 app.listen(port,() => {

@@ -5,6 +5,7 @@ getExemple = (req,res) => {
 
 postExemple = (req, res) => {
   response = `You sent a Post, I'll respond with a status of 201 (Created) even though I did't`;
+  
   res.status(201).send(response);
 };
 
