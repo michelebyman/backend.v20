@@ -1,4 +1,4 @@
-//express http server
+//express is an http server
 const express = require('express');
 const routes = require("./routes");
 const app = express(); 
