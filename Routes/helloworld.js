@@ -1,8 +1,16 @@
 hello = (req, res) => {
-  res.send({"Hello": "World"})
+  response = {
+    "hello": "world",
+    "query": req.query,
+    "params": req.params,
+    "headers": req.headers
+  }
+
+  res.send(response);
 }; 
 
 // exports the function named hello as hello
 module.exports = {
-  hello: hello
+  hello: hello,
+  params: hello
 };

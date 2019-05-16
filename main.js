@@ -1,7 +1,9 @@
 //express is an http server
 const express = require('express');
 const routes = require("./routes");
-const app = express(); 
+const app = express();
+
+const port = process.env.PORT || 3000;
 
 app.use('/', routes);
 
@@ -11,6 +13,6 @@ app.use('/', routes);
 // });
 
 //listen to port that is defined.
-app.listen(3000,() => {
-    console.info(`server is listening on port 3000.`);
+app.listen(port,() => {
+    console.info(`server is listening on port ${port}.`);
 });

@@ -4,12 +4,12 @@ const router = express.Router();
 const helloWorld = require('./helloworld.js');
 
 // middleware that is specific to this router.
-router.use((req, res, next) =>{
- console.log('Time: ', Date.now());
- next();
-});
+// router.use((req, res, next) =>{
+//  console.log('Time: ', Date.now());
+//  next();
+// });
 
 // run the hello() that is exported from helloworld.js.
 router.get("/", helloWorld.hello); 
-
+router.get("/:pathParameter", helloWorld.params)
 module.exports = router; 
