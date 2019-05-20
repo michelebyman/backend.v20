@@ -1,6 +1,7 @@
 //express is an http server
 const express = require('express');
 const routes = require("./routes");
+const db = require('./models')
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -12,9 +13,18 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.use((req,res,next) => {
+    req.models = db.models;
+    next();
+});
+
 app.use('/', routes);
 
-//listen to port that is defined.
-app.listen(port,() => {
-    console.info(`server is listening on port ${port}.`);
+
+//starts up the database then the server listens on request
+
+db.connectDb().then(() => {
+    const listener = app.listen(port, () => {
+        console.info(`Server is listening on port ${listener.address().port}.`);
+    })
 });
