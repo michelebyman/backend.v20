@@ -2,31 +2,19 @@ mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   name: String,
-  username: {
+  lastName: String,
+  age: Number,
+  userName: {
     type: String,
-//    unique: true,
+    unique: true,
   },
   email: {
     type: String,
-//    unique: true,
+    unique: true,
 //    validator: function(v) {
 //      return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 //    },
   },
-  address: {
-    street: String,
-    suite: String,
-    city: String,
-    zipcode: String,
-    geo: {
-      lat: {
-        type: Number,
-      },
-      lng: {
-        type: Number,
-      }
-    }
-  }
 });
 
 const User = mongoose.model('User', userSchema);

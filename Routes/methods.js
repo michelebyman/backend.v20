@@ -1,27 +1,27 @@
-getExemple = (req,res) => {
-  res.append('Custom-response-header', 'yep');
-  res.send('you sent a get request and got a custom response header');
-}; 
-
-postExemple = (req, res) => {
-  response = `You sent a Post, I'll respond with a status of 201 (Created) even though I did't`;
-  
-  res.status(201).send(response);
+get =  (req,res,next) => {
+  req.models.User.find().then((users) => {
+      return res.send(users);
+  }).catch((error) => {
+      next(error);
+  });
 };
 
-putExemple = (req, res) => {
-  response = `You sent a Put, I can respond with a 201 if it didn't exist or 200 if updated`;
-  res.status(200).send(response);
+post = (req, res, next) => {
+  req.models.User.create({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      age: req.body.age,
+      userName: req.body.userName,
+      email: req.body.email,
+  }).then((user) => {
+      return res.status(201).send(user);
+  }).catch((error) => {
+      next(error);
+  });
 };
 
-deleteExemple = (req, res) => {
-  response = `You sent a Delete, you won't see this because 204 doesn't allow content`;
-  res.status(204).send(response);
-};
-
+// exports the function named hello as hello
 module.exports = {
-  get: getExemple,
-  post: postExemple,
-  put: putExemple,
-  delete: deleteExemple,
+  get: get,
+  post: post,
 };
